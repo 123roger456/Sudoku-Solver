@@ -25,7 +25,7 @@ function Grid() {
     url: 'https://sudoku-board.p.rapidapi.com/new-board',
     params: {diff: '2', stype: 'list', solu: 'true'},
     headers: {
-      'X-RapidAPI-Key': '9903afed86msha9b114cb75591eep1c665djsn642d35ec45ac',
+      'X-RapidAPI-Key': '##',
       'X-RapidAPI-Host': 'sudoku-board.p.rapidapi.com'
     }
   };
