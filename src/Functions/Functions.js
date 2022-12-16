@@ -1,5 +1,6 @@
+import React, {useState} from "react";
 const solve = (board) => {
-  console.log(board)
+  
     solver(board);
     return board
 }
@@ -42,4 +43,31 @@ function isValid(board, row, col, c) {
   return true;
 }
 
-export {solve}
+const validate = (board) => {
+    const set = new Set()
+    let complete = true
+    for(let i = 0; i < board.length; i++){
+        for(let j = 0; j < board[0].length; j++){
+            const value = board[i][j]
+            if(value !== "."){
+                const rowString = `${value} at row ${i}`
+                const colString = `${value} at col ${j}`
+                const boxString = `${value} at box ${Math.floor(i/3)}, ${Math.floor(j/3)}`
+                if(set.has(rowString) || set.has(colString) || set.has(boxString)){
+                    return [false,i,j, complete]
+                }else{
+                    set.add(rowString)
+                    set.add(colString)
+                    set.add(boxString)
+                }
+            }
+            else{
+              complete = false
+            }
+        }
+    }
+
+    return [true, -1, -1, complete]
+}
+
+export {solve, validate}
